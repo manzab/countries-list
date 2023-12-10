@@ -15,8 +15,7 @@ import {
 })
 export class PaginationComponent implements OnChanges {
   @Input('totalPages') totalPages: number;
-
-  currentPage: number;
+  @Input('currentPage') currentPage: number;
 
   @Output('pageChanged') pageChanged = new EventEmitter<number>();
 
@@ -37,7 +36,6 @@ export class PaginationComponent implements OnChanges {
   }
 
   setPage(page: number) {
-    this.currentPage = page;
     this.pageChanged.emit(page);
   }
 }

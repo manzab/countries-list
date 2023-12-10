@@ -1,0 +1,19 @@
+.favorite-countries-list {
+  max-width: inherit;
+
+  &__table {
+    margin: 20px;
+  }
+
+  &__table-header {
+    $_column-size-l: 330px;
+
+    &--large {
+      width: $_column-size-l;
+    }
+  }
+
+  &__placeholder {
+    margin: 20px;
+  }
+}

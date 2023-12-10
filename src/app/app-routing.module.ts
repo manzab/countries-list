@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CountriesListContainerComponent } from './containers/countries-list-container/countries-list-container.component';
+import { FavoriteCountriesContainerComponent } from './containers/favorite-countries-container/favorite-countries-container.component';
 
 const routes: Routes = [
   {
     path: '',
     component: CountriesListContainerComponent,
-    data: {
-      title: 'Countries list',
-    },
+  },
+  {
+    path: 'favorites',
+    component: FavoriteCountriesContainerComponent,
   },
 ];
 

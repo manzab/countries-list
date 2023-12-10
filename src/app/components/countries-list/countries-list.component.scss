@@ -1,15 +1,33 @@
-.table {
-  margin: 20px;
-}
+.countries-list {
+  max-width: inherit;
 
-.example {
-  width: 330px;
-}
+  &__table {
+    margin: 20px;
+  }
 
-.modal {
-  display: none;
+  &__table-header {
+    $_column-size-s: 100px;
+    $_column-size-m: 200px;
+    $_column-size-l: 330px;
 
-  &--open {
-    display: block;
+    &--small {
+      width: $_column-size-s;
+    }
+
+    &--medium {
+      width: $_column-size-m;
+    }
+
+    &--large {
+      width: $_column-size-l;
+    }
+  }
+
+  &__modal {
+    display: none;
+
+    &--open {
+      display: block;
+    }
   }
 }

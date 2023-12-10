@@ -1,6 +1,13 @@
-<app-countries-list [data]="pageData"></app-countries-list>
+<app-countries-list
+  class="countries-list-container__table"
+  [data]="pageData"
+  (sortChanged)="onSortChanged($event)"
+  (countryLiked)="onCountryLiked($event)"
+></app-countries-list>
 
 <app-pagination
+  class="countries-list-container__pagination"
+  [currentPage]="currentPage"
   [totalPages]="pagesCount"
   (pageChanged)="getPageData($event)"
 ></app-pagination>

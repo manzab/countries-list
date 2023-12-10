@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CountriesListContainerComponent } from './containers/countries-list-container/countries-list-container.component';
+import { FavoriteCountriesContainerComponent } from './containers/favorite-countries-container/favorite-countries-container.component';
+import { FavoriteCountriesListComponent } from './components/favorite-countries-list/favorite-countries-list.component';
 
 @NgModule({
-  declarations: [AppComponent, CountriesListComponent, PaginationComponent, NavigationComponent, CountriesListContainerComponent],
+  declarations: [AppComponent, CountriesListComponent, PaginationComponent, NavigationComponent, CountriesListContainerComponent, FavoriteCountriesContainerComponent, FavoriteCountriesListComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

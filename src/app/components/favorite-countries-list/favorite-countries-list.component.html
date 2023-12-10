@@ -1,0 +1,29 @@
+<ng-container *ngIf="countries.length; else placeholder">
+  <div class="overflow-auto">
+    <table class="favorite-countries-list__table table text-nowrap">
+      <thead>
+        <tr>
+          <th
+            class="sg-sortable favorite-countries-list__table-header--large"
+            scope="col"
+          >
+            Name
+          </th>
+          <th class="favorite-countries-list__table-header--small" scope="col">
+            Flag
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of countries">
+          <td>{{ item.name.common }}</td>
+          <td><img width="40" height="25" [attr.src]="item.flags.svg" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<ng-template #placeholder>
+  <h3 class="favorite-countries-list__placeholder">No countries added.</h3>
+</ng-template>

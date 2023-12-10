@@ -17,11 +17,10 @@ export class CountriesListComponent {
   @Input() data: ReadonlyArray<Country>;
 
   @Output() sortChanged = new EventEmitter<SortState>();
+  @Output() countryLiked = new EventEmitter<Readonly<Country>>();
 
   sortState: SortState = 'ascending';
-
   isModalOpen = false;
-
   selectedCountry: { name: string; population: number };
 
   @HostBinding('class.countries-list') get default(): boolean {
@@ -33,11 +32,15 @@ export class CountriesListComponent {
     this.isModalOpen = true;
   }
 
-  closeModal() {
+  changeCountryStatus(country: Readonly<Country>): void {
+    this.countryLiked.emit(country);
+  }
+
+  closeModal(): void {
     this.isModalOpen = false;
   }
 
-  onSortChanged() {
+  onSortChanged(): void {
     if (this.sortState === 'ascending') {
       this.sortState = 'descending';
     } else {

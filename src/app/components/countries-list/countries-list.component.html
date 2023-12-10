@@ -1,20 +1,24 @@
 <div class="overflow-auto">
-  <table class="table text-nowrap">
+  <table class="countries-list__table table text-nowrap">
     <thead>
       <tr>
-        <th scope="col" class="sg-sortable example" aria-sort="ascending">
-          <button class="sg-table-sort" (click)="onSortChanged()">
-            <span class="sr-only">Sort by</span>
-            Name
-            <span class="sr-only">ascending</span>
-          </button>
+        <th
+          class="sg-sortable countries-list__table-header--large"
+          scope="col"
+          [attr.aria-sort]="sortState"
+        >
+          <button class="sg-table-sort" (click)="onSortChanged()">Name</button>
         </th>
-        <th scope="col">Region</th>
-        <th scope="col">Area</th>
-        <th class="example" scope="col">Capital city</th>
-        <th scope="col">UN Member Status</th>
+        <th class="countries-list__table-header--small" scope="col">Region</th>
+        <th class="countries-list__table-header--small" scope="col">Area</th>
+        <th class="countries-list__table-header--medium" scope="col">
+          Capital city
+        </th>
+        <th class="countries-list__table-header--small" scope="col">
+          UN Member Status
+        </th>
         <th></th>
-        <th></th>
+        <th class="countries-list__table-header--small"></th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +26,7 @@
         <td>{{ item.name.common }}</td>
         <td>{{ item.region }}</td>
         <td>{{ item.area }}</td>
-        <td>{{ item.capital[0] ?? "-" }}</td>
+        <td>{{ item.capital[0] ? item.capital[0] : "-" }}</td>
         <td>{{ item.unMember }}</td>
         <td class="py-sm-0 align-middle">
           <button
@@ -35,11 +39,11 @@
         </td>
         <td class="py-sm-0 align-middle">
           <button
-            type="button"
             class="size-sm primary"
-            (click)="showMoreInfo(item.name.common, item.population)"
+            type="button"
+            (click)="changeCountryStatus(item)"
           >
-            Like this country!
+            {{ item.isFavorite ? "Unlike" : "Like" }}
           </button>
         </td>
       </tr>
@@ -53,8 +57,8 @@
   aria-modal="true"
   aria-labelledby="modal_header"
   aria-describedby="modal_body"
-  class="modal"
-  [ngClass]="{ 'modal--open': isModalOpen }"
+  class="countries-list__modal modal"
+  [ngClass]="{ 'countries-list__modal--open': isModalOpen }"
 >
   <header>
     <h3 id="modal_header" class="heading-m">{{ selectedCountry?.name }}</h3>

@@ -1,9 +1,8 @@
 <nav class="pagination small" role="navigation" aria-label="Pagination">
-  <ul class="gds-reset">
-    <li>
+  <ul class="gds-reset pagination__list">
+    <li *ngFor="let page of pagesArray">
       <button
-        *ngFor="let page of pagesArray"
-        class="gds-reset pagination__button"
+        class="pagination__button"
         [ngClass]="{ 'pagination__button--active': currentPage === page }"
         (click)="setPage(page)"
       >
