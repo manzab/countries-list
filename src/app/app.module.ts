@@ -8,7 +8,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CountriesListContainerComponent } from './containers/countries-list-container/countries-list-container.component';
 import { FavoritesListContainerComponent } from './containers/favorites-list-container/favorites-list-container.component';
-import { FavoriteCountriesListComponent } from './components/favorite-countries-list/favorite-countries-list.component';
+import { FavoritesListComponent } from './components/favorites-list/favorites-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { FavoriteCountriesListComponent } from './components/favorite-countries-
     NavigationComponent,
     CountriesListContainerComponent,
     FavoritesListContainerComponent,
-    FavoriteCountriesListComponent,
+    FavoritesListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

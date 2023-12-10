@@ -33,13 +33,14 @@
             See more info
           </button>
         </td>
-        <td class="py-sm-0 align-middle">
+        <td class="py-sm-0 align-middle text-center">
           <button
-            class="size-sm primary"
+            class="size-sm"
+            [ngClass]="{ primary: !item.isFavorite, ghost: item.isFavorite }"
             type="button"
             (click)="changeCountryStatus(item)"
           >
-            {{ item.isFavorite ? "Unlike" : "Like" }}
+            {{ item.isFavorite ? "Unlike it" : "Like it!" }}
           </button>
         </td>
       </tr>
