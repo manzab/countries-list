@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CountriesListContainerComponent } from './containers/countries-list-container/countries-list-container.component';
-import { FavoriteCountriesContainerComponent } from './containers/favorite-countries-container/favorite-countries-container.component';
+import { FavoritesListContainerComponent } from './containers/favorites-list-container/favorites-list-container.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'favorites',
-    component: FavoriteCountriesContainerComponent,
+    component: FavoritesListContainerComponent,
   },
 ];
 

@@ -24,7 +24,7 @@ export class PaginationComponent implements OnChanges {
     return true;
   }
 
-  pagesArray: ReadonlyArray<number>;
+  pagesArray: Array<number>;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['totalPages'] && this.totalPages) {

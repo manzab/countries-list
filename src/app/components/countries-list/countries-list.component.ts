@@ -8,31 +8,36 @@ import {
 import { Country } from '../../models/country.model';
 import { SortState } from '../../models/sort-state.model';
 
+interface SelectedCountry {
+  name: string;
+  population: number;
+}
+
 @Component({
   selector: 'app-countries-list',
   templateUrl: './countries-list.component.html',
   styleUrls: ['./countries-list.component.scss'],
 })
 export class CountriesListComponent {
-  @Input() data: ReadonlyArray<Country>;
+  @Input() data: Array<Country>;
 
   @Output() sortChanged = new EventEmitter<SortState>();
-  @Output() countryLiked = new EventEmitter<Readonly<Country>>();
+  @Output() countryLiked = new EventEmitter<Country>();
 
   sortState: SortState = 'ascending';
   isModalOpen = false;
-  selectedCountry: { name: string; population: number };
+  selectedCountry: Country;
 
   @HostBinding('class.countries-list') get default(): boolean {
     return true;
   }
 
-  showMoreInfo(name: string, population: number) {
-    this.selectedCountry = { name, population };
+  showMoreInfo(country: Country) {
+    this.selectedCountry = country;
     this.isModalOpen = true;
   }
 
-  changeCountryStatus(country: Readonly<Country>): void {
+  changeCountryStatus(country: Country): void {
     this.countryLiked.emit(country);
   }
 

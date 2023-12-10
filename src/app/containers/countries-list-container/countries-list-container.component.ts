@@ -25,15 +25,7 @@ export class CountriesListContainerComponent implements OnInit, OnDestroy {
   constructor(private readonly countriesService: CountriesService) {}
 
   ngOnInit(): void {
-    this.countriesService
-      .getAllCountriesList()
-      .pipe(take(1))
-      .subscribe((data) => {
-        this.totalData = data;
-        this.pagesCount = Math.ceil(data.length / this.pageSize);
-
-        this.getPageData(this.currentPage);
-      });
+    this.fetchCountries();
   }
 
   getPageData(page: number): void {
@@ -71,26 +63,18 @@ export class CountriesListContainerComponent implements OnInit, OnDestroy {
     return 0;
   }
 
-  onCountryLiked(country: Readonly<Country>): void {
+  onCountryLiked(country: Country): void {
     const countryIndex = this.pageData.findIndex(
-      (val) => val.name.common === country.name.common,
+      (val) => val.cca3 === country.cca3,
     );
+    const isFavorite = !this.pageData[countryIndex].isFavorite;
 
-    if (country.isFavorite) {
-      this.pageData[countryIndex] = {
-        ...this.pageData[countryIndex],
-        isFavorite: false,
-      };
+    this.pageData[countryIndex] = {
+      ...this.pageData[countryIndex],
+      isFavorite,
+    };
 
-      this.countriesService.setFavoriteCountries(country, true);
-    } else {
-      this.pageData[countryIndex] = {
-        ...this.pageData[countryIndex],
-        isFavorite: true,
-      };
-
-      this.countriesService.setFavoriteCountries(country);
-    }
+    this.countriesService.setFavoriteCountries(country, isFavorite);
   }
 
   ngOnDestroy(): void {
@@ -103,5 +87,27 @@ export class CountriesListContainerComponent implements OnInit, OnDestroy {
       this.pageSize,
       ...this.pageData,
     );
+
+    this.countriesService.setAllCountries(this.totalData);
+  }
+
+  private populateData(data: Array<Country>): void {
+    this.totalData = data;
+    this.pagesCount = Math.ceil(data.length / this.pageSize);
+
+    this.getPageData(this.currentPage);
+  }
+
+  private fetchCountries(): void {
+    const countries = this.countriesService.getAllCountries();
+
+    if (countries.length > 0) {
+      this.populateData(countries);
+    } else {
+      this.countriesService
+        .fetchAllCountriesList()
+        .pipe(take(1))
+        .subscribe((data) => this.populateData(data));
+    }
   }
 }

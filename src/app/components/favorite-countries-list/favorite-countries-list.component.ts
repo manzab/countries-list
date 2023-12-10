@@ -7,7 +7,7 @@ import { Country } from '../../models/country.model';
   styleUrls: ['./favorite-countries-list.component.scss'],
 })
 export class FavoriteCountriesListComponent {
-  @Input('countries') countries: ReadonlyArray<Country>;
+  @Input('countries') countries: Array<Country>;
 
   @HostBinding('class.favorite-countries-list') get default(): boolean {
     return true;

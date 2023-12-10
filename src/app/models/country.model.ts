@@ -1,6 +1,6 @@
 export interface Country {
   area: number;
-  capital: ReadonlyArray<string>;
+  capital: Array<string>;
   cca3: string;
   isFavorite?: boolean;
   name: { official: string; common: string };

@@ -29,11 +29,7 @@
         <td>{{ item.capital[0] ? item.capital[0] : "-" }}</td>
         <td>{{ item.unMember }}</td>
         <td class="py-sm-0 align-middle">
-          <button
-            type="button"
-            class="size-sm"
-            (click)="showMoreInfo(item.name.common, item.population)"
-          >
+          <button type="button" class="size-sm" (click)="showMoreInfo(item)">
             See more info
           </button>
         </td>
@@ -52,16 +48,18 @@
 </div>
 
 <aside
-  role="dialog"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modal_header"
   aria-describedby="modal_body"
+  aria-labelledby="modal_header"
+  aria-modal="true"
   class="countries-list__modal modal"
+  role="dialog"
+  role="dialog"
   [ngClass]="{ 'countries-list__modal--open': isModalOpen }"
 >
   <header>
-    <h3 id="modal_header" class="heading-m">{{ selectedCountry?.name }}</h3>
+    <h3 id="modal_header" class="heading-m">
+      {{ selectedCountry?.name?.common }}
+    </h3>
     <button class="close" (click)="closeModal()">
       <span class="sr-only">Close</span>
       <i></i>
