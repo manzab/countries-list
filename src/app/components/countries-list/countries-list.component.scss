@@ -1,0 +1,15 @@
+.table {
+  margin: 20px;
+}
+
+.example {
+  width: 330px;
+}
+
+.modal {
+  display: none;
+
+  &--open {
+    display: block;
+  }
+}

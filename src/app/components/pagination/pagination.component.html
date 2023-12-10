@@ -1,0 +1,14 @@
+<nav class="pagination small" role="navigation" aria-label="Pagination">
+  <ul class="gds-reset">
+    <li>
+      <button
+        *ngFor="let page of pagesArray"
+        class="gds-reset pagination__button"
+        [ngClass]="{ 'pagination__button--active': currentPage === page }"
+        (click)="setPage(page)"
+      >
+        {{ page }}
+      </button>
+    </li>
+  </ul>
+</nav>

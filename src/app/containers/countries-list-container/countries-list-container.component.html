@@ -1,0 +1,6 @@
+<app-countries-list [data]="pageData"></app-countries-list>
+
+<app-pagination
+  [totalPages]="pagesCount"
+  (pageChanged)="getPageData($event)"
+></app-pagination>
