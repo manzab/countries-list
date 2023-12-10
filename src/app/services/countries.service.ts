@@ -36,8 +36,6 @@ export class CountriesService {
   }
 
   setFavoriteCountries(country: Country, isFavorite: boolean) {
-    console.log(isFavorite);
-
     if (!isFavorite) {
       this.favoriteCountries = this.favoriteCountries.filter(
         (val) => val.cca3 !== country.cca3,
